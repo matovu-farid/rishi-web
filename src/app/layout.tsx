@@ -42,13 +42,13 @@ export default function RootLayout({
           <header className="flex justify-end bg-background/80 border-b   items-center p-4 gap-4 h-16 sticky top-0 z-100 ">
             <Header />
             <SignedOut>
-              <SignInButton>
-                <Button className="bg-[#542beb] h-9  text-white whitespace-nowrap rounded-full font-medium text-sm sm:text-base  sm:h-12 px-4 sm:px-5 cursor-pointer">
+              <SignInButton >
+                <Button className="bg-[#542beb] h-8  text-white whitespace-nowrap rounded-full font-medium text-sm sm:text-base  sm:h-12 px-4 sm:px-5 cursor-pointer">
                   Sign In
                 </Button>
               </SignInButton>
               <SignUpButton>
-                <Button className="bg-[#542beb] h-9  text-white whitespace-nowrap rounded-full font-medium text-sm sm:text-base  sm:h-12 px-4 sm:px-5 cursor-pointer">
+                <Button className="bg-[#542beb] h-8  text-white whitespace-nowrap rounded-full font-medium text-sm sm:text-base  sm:h-12 px-4 sm:px-5 cursor-pointer">
                   Sign Up
                 </Button>
               </SignUpButton>
