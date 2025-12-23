@@ -11,6 +11,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
+import { ClerkListener } from "@/components/clerk-listener";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,7 @@ export default function RootLayout({
   // border-b flex px-2  border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50
   return (
     <ClerkProvider>
+      <ClerkListener />
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -42,7 +44,7 @@ export default function RootLayout({
           <header className="flex justify-end bg-background/80 border-b   items-center p-4 gap-4 h-16 sticky top-0 z-100 ">
             <Header />
             <SignedOut>
-              <SignInButton >
+              <SignInButton>
                 <Button className="bg-[#542beb] h-8  text-white whitespace-nowrap rounded-full font-medium text-sm sm:text-base  sm:h-12 px-4 sm:px-5 cursor-pointer">
                   Sign In
                 </Button>
