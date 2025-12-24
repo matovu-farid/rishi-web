@@ -36,7 +36,6 @@ export default function RootLayout({
   // border-b flex px-2  border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50
   return (
     <ClerkProvider>
-      <ClerkListener />
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
