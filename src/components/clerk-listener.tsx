@@ -8,7 +8,10 @@ import { useAtom } from "jotai";
 
 export function ClerkListener() {
   const clerk = useClerk();
-  const [login] = useQueryState("login", parseAsBoolean.withDefault(false));
+  const [login, setLogin] = useQueryState(
+    "login",
+    parseAsBoolean.withDefault(false)
+  );
   const [queryState] = useQueryState("state");
   const { isSignedIn } = useSession();
   const { user } = useUser();
@@ -26,6 +29,7 @@ export function ClerkListener() {
       return;
     }
     if (!login) return;
+    setLogin(false);
 
     clerk.redirectToSignIn();
   }, [clerk, login, queryState, isSignedIn, state, userId]);
