@@ -1,7 +1,7 @@
 "use client";
 import { useClerk, useSession, useUser } from "@clerk/nextjs";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useQueryState, parseAsBoolean } from "nuqs";
 import { stateAtom } from "@/atoms/state";
 import { useAtom } from "jotai";
@@ -23,7 +23,7 @@ export function ClerkListener() {
   }
   useEffect(() => {
     if (isSignedIn) {
-      if (state || userId) return;
+      if (!state || !userId) return;
       window.location.href = `rishi://auth/callback?state=${state}&userId=${userId}`;
 
       return;
