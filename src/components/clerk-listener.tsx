@@ -12,6 +12,7 @@ export function ClerkListener() {
     "login",
     parseAsBoolean.withDefault(false)
   );
+  const ref = useRef<HTMLAnchorElement>(null);
   const [queryState] = useQueryState("state");
   const { isSignedIn } = useSession();
   const { user } = useUser();
@@ -24,6 +25,7 @@ export function ClerkListener() {
   useEffect(() => {
     if (isSignedIn) {
       if (!state || !userId) return;
+      console.log(JSON.stringify(user));
       window.location.href = `rishi://auth/callback?state=${state}&userId=${userId}`;
 
       return;
