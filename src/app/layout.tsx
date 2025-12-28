@@ -27,7 +27,10 @@ export const metadata: Metadata = {
   title: "Rishi",
   description: "Rishi is a reading assistant that helps you read better.",
 };
-
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Add your Clerk Publishable Key to the .env file");
+}
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,7 +38,10 @@ export default function RootLayout({
 }>) {
   // border-b flex px-2  border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      proxyUrl={"https://matovu-farid.com/__clerk"}
+      publishableKey={PUBLISHABLE_KEY}
+    >
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
