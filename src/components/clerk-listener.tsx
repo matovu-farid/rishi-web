@@ -1,7 +1,7 @@
 "use client";
 import { useClerk, useSession, useUser } from "@clerk/nextjs";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useQueryState, parseAsBoolean } from "nuqs";
 import { stateAtom } from "@/atoms/state";
 import { useAtom } from "jotai";
@@ -13,7 +13,6 @@ export function ClerkListener() {
     "login",
     parseAsBoolean.withDefault(false)
   );
-  const ref = useRef<HTMLAnchorElement>(null);
   const [queryState] = useQueryState("state");
   const { isSignedIn } = useSession();
   const { user } = useUser();
