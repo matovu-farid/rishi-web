@@ -29,8 +29,7 @@ export const metadata: Metadata = {
 };
 const PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 if (!PUBLISHABLE_KEY) {
-  // throw new Error("Add your Clerk Publishable Key to the .env file");
-  console.log("Clerk Publishable Key is missing");
+  throw new Error("Add your Clerk Publishable Key to the .env file");
 }
 export default function RootLayout({
   children,
