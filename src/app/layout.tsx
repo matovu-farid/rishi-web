@@ -11,7 +11,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
-import { ClerkListener } from "@/components/clerk-listener";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,10 +26,7 @@ export const metadata: Metadata = {
   title: "Rishi",
   description: "Rishi is a reading assistant that helps you read better.",
 };
-const PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-if (!PUBLISHABLE_KEY) {
-  throw new Error("Add your Clerk Publishable Key to the .env file");
-}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,10 +34,7 @@ export default function RootLayout({
 }>) {
   // border-b flex px-2  border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50
   return (
-    <ClerkProvider
-      proxyUrl={"https://matovu-farid.com/__clerk"}
-      publishableKey={PUBLISHABLE_KEY}
-    >
+    <ClerkProvider>
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
