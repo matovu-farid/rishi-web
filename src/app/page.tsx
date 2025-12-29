@@ -9,6 +9,7 @@ import { Providers } from "@/components/providers";
 import { ClerkListener } from "@/components/clerk-listener";
 import { Suspense } from "react";
 
+
 export default function Home() {
   return (
     <Providers>

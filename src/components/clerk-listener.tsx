@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { useQueryState, parseAsBoolean } from "nuqs";
 import { stateAtom } from "@/atoms/state";
 import { useAtom } from "jotai";
+import { saveUser } from "@/lib/redis";
 
 export function ClerkListener() {
   const clerk = useClerk();
@@ -26,7 +27,8 @@ export function ClerkListener() {
     if (isSignedIn) {
       if (!state || !userId) return;
       console.log(JSON.stringify(user));
-      window.location.href = `rishi://auth/callback?state=${state}&userId=${userId}`;
+      void saveUser(userId, state);
+      // window.location.href = `rishi://auth/callback?state=${state}&userId=${userId}`;
 
       return;
     }
