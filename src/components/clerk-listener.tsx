@@ -28,7 +28,7 @@ export function ClerkListener() {
       if (!state || !userId) return;
       console.log(JSON.stringify(user));
       void saveUser(userId, state);
-      // window.location.href = `rishi://auth/callback?state=${state}&userId=${userId}`;
+      window.location.href = `rishi://auth/callback?state=${state}&userId=${userId}`;
 
       return;
     }
