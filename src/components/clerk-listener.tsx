@@ -4,7 +4,7 @@ import { useClerk, useSession, useUser } from "@clerk/nextjs";
 import { useEffect } from "react";
 import { useQueryState, parseAsBoolean } from "nuqs";
 import { stateAtom } from "@/atoms/state";
-import { useAtom } from "jotai";
+import { useAtom, } from "jotai";
 import { saveUser } from "@/lib/redis";
 
 export function ClerkListener() {
@@ -14,7 +14,7 @@ export function ClerkListener() {
     parseAsBoolean.withDefault(false)
   );
   const [queryState] = useQueryState("state");
-  const [profileState] = useQueryState("profile", parseAsBoolean.withDefault(false));
+  const [queryProfileState] = useQueryState("profile", parseAsBoolean.withDefault(false));
   const { isSignedIn } = useSession();
   const { user } = useUser();
   const userId = user?.id;
@@ -24,11 +24,8 @@ export function ClerkListener() {
     setState(queryState);
   }
 
-  useEffect(() => {
-    if (profileState) {
-      void clerk.redirectToUserProfile()
-    }
-  }, [clerk, profileState]);
+
+
   useEffect(() => {
     if (isSignedIn) {
       if (!state || !userId) return;
@@ -44,5 +41,8 @@ export function ClerkListener() {
     clerk.redirectToSignIn();
   }, [clerk, login, queryState, isSignedIn, state, userId]);
 
+  if (queryProfileState) {
+    void clerk.redirectToUserProfile()
+  }
   return <></>;
 }
