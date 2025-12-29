@@ -14,6 +14,7 @@ export function ClerkListener() {
     parseAsBoolean.withDefault(false)
   );
   const [queryState] = useQueryState("state");
+  const [profileState] = useQueryState("profile", parseAsBoolean.withDefault(false));
   const { isSignedIn } = useSession();
   const { user } = useUser();
   const userId = user?.id;
@@ -22,6 +23,12 @@ export function ClerkListener() {
   if (queryState) {
     setState(queryState);
   }
+
+  useEffect(() => {
+    if (profileState) {
+      void clerk.redirectToUserProfile()
+    }
+  }, [clerk, profileState]);
   useEffect(() => {
     if (isSignedIn) {
       if (!state || !userId) return;
