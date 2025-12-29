@@ -39,8 +39,8 @@ export default function RootLayout({
   // border-b flex px-2  border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50
   return (
     <ClerkProvider
-      proxyUrl={"https://matovu-farid.com/__clerk"}
-      publishableKey={PUBLISHABLE_KEY}
+    // proxyUrl={"https://matovu-farid.com/__clerk"}
+    // publishableKey={PUBLISHABLE_KEY}
     >
       <html lang="en">
         <body
